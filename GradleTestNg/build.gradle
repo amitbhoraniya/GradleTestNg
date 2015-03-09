@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceSets.test.java {
+	srcDirs = ["src"]
+	include "**/*.java"
+}
+
+repositories { mavenCentral()  }
+dependencies {
+	compile "org.testng:testng:+"
+	compile "org.seleniumhq.selenium:selenium-server:+"
+	compile "org.uncommons:reportng:+"
+}
+
+test{
+	useTestNG()
+	{
+		testLogging.showStandardStreams = true
+		useDefaultListeners = false
+	}
+}
+
